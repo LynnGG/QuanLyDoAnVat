@@ -13,7 +13,7 @@ import source.manageMenu;
 
 /**
  *
- * @author trant
+ * @author HoaiAnh
  */
 public class QuanLyMenu extends javax.swing.JPanel {
 
@@ -26,7 +26,7 @@ public class QuanLyMenu extends javax.swing.JPanel {
         dtm.setNumRows(0);
         try {
             List<Menu> listMenu = new ArrayList<>();
-            listMenu = mmn.getListMenu();
+            listMenu = (List<Menu>) mmn.getListMenu();
             for (Menu mn : listMenu) {
                 dtm.addRow(new Object[]{
                     mn.getMaMon(),
@@ -65,17 +65,17 @@ public class QuanLyMenu extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         txtGia_106 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        btnAdd = new javax.swing.JButton();
-        btnChange = new javax.swing.JButton();
-        btnDel = new javax.swing.JButton();
-        btnRe = new javax.swing.JButton();
+        btnAdd_106 = new javax.swing.JButton();
+        btnChange_106 = new javax.swing.JButton();
+        btnDel_106 = new javax.swing.JButton();
+        btnRef_106 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        cbb_106 = new javax.swing.JComboBox<>();
+        txtGia_107 = new javax.swing.JTextField();
 
         jLabel2.setText("jLabel2");
 
-        setBackground(new java.awt.Color(102, 204, 255));
+        setBackground(new java.awt.Color(204, 204, 0));
         setForeground(new java.awt.Color(255, 255, 255));
         setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
 
@@ -83,57 +83,57 @@ public class QuanLyMenu extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("QUẢN LÝ MENU");
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("MÃ MÓN:");
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        txtMa_106.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setText("TÊN MÓN:");
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        txtTen_106.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel5.setText("GIÁ BÁN:");
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        txtGia_106.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel6.setText("PHÂN LOẠI:");
 
-        btnAdd.setBackground(new java.awt.Color(255, 204, 204));
-        btnAdd.setForeground(new java.awt.Color(0, 153, 153));
-        btnAdd.setText("THÊM");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+        btnAdd_106.setBackground(new java.awt.Color(255, 204, 204));
+        btnAdd_106.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        btnAdd_106.setText("THÊM");
+        btnAdd_106.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
+                btnAdd_106ActionPerformed(evt);
             }
         });
 
-        btnChange.setBackground(new java.awt.Color(255, 204, 204));
-        btnChange.setForeground(new java.awt.Color(0, 153, 153));
-        btnChange.setText("SỬA");
-        btnChange.addActionListener(new java.awt.event.ActionListener() {
+        btnChange_106.setBackground(new java.awt.Color(255, 204, 204));
+        btnChange_106.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        btnChange_106.setText("SỬA");
+        btnChange_106.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChangeActionPerformed(evt);
+                btnChange_106ActionPerformed(evt);
             }
         });
 
-        btnDel.setBackground(new java.awt.Color(255, 204, 204));
-        btnDel.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
-        btnDel.setForeground(new java.awt.Color(0, 153, 153));
-        btnDel.setText("XÓA");
-        btnDel.addActionListener(new java.awt.event.ActionListener() {
+        btnDel_106.setBackground(new java.awt.Color(255, 204, 204));
+        btnDel_106.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        btnDel_106.setText("XÓA");
+        btnDel_106.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDelActionPerformed(evt);
+                btnDel_106ActionPerformed(evt);
             }
         });
 
-        btnRe.setBackground(new java.awt.Color(255, 204, 204));
-        btnRe.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
-        btnRe.setForeground(new java.awt.Color(0, 153, 153));
-        btnRe.setText("LÀM MỚI");
-        btnRe.addActionListener(new java.awt.event.ActionListener() {
+        btnRef_106.setBackground(new java.awt.Color(255, 204, 204));
+        btnRef_106.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        btnRef_106.setText("LÀM MỚI");
+        btnRef_106.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReActionPerformed(evt);
+                btnRef_106ActionPerformed(evt);
             }
         });
 
@@ -152,49 +152,45 @@ public class QuanLyMenu extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        cbb_106.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        txtGia_107.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(35, 35, 35)
+                .addComponent(btnAdd_106, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(90, 90, 90)
+                .addComponent(btnChange_106)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnDel_106, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73)
+                .addComponent(btnRef_106, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(110, 110, 110)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)
-                        .addComponent(btnChange)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnDel, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addComponent(btnRe, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel4)))
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtMa_106, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
-                                .addComponent(txtTen_106)
-                                .addComponent(txtGia_106)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(30, 30, 30)
-                                    .addComponent(jLabel1)))
-                            .addComponent(cbb_106, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtMa_106)
+                        .addComponent(txtTen_106)
+                        .addComponent(txtGia_106, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtGia_107, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtMa_106, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -207,47 +203,41 @@ public class QuanLyMenu extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtGia_106, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(cbb_106, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
+                    .addComponent(txtGia_107, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnChange, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRe, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAdd_106, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnChange_106, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDel_106, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRef_106, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+    private void btnAdd_106ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd_106ActionPerformed
         // TODO add your handling code here:
-        Menu mt = new Menu(txtMa_106.getText(), txtTen_106.getText(), txtGia_106.getText(), .getText());
-        mmt.add(mt);
-        refresh();
-    }//GEN-LAST:event_btnAddActionPerformed
+        
+    }//GEN-LAST:event_btnAdd_106ActionPerformed
 
-    private void btnChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeActionPerformed
+    private void btnChange_106ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChange_106ActionPerformed
         // TODO add your handling code here:
-        Menu mt = new Menu(txtMa_106.getText(), txtTen_106.getText(), txtGia_106.getText(), jTextField4.getText(),jTextField5.getText());
-        mmt.editMayTinh(mt);
-        refresh();
-    }//GEN-LAST:event_btnChangeActionPerformed
+        
+    }//GEN-LAST:event_btnChange_106ActionPerformed
 
-    private void btnDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelActionPerformed
+    private void btnDel_106ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDel_106ActionPerformed
         // TODO add your handling code here:
-        Menu mt = new Menu(txtMa_106.getText(), txtTen_106.getText(), txtGia_106.getText(), jTextField4.getText(),jTextField5.getText());
-        mmt.delMayTinh(mt);
-        refresh();
-    }//GEN-LAST:event_btnDelActionPerformed
+        
+    }//GEN-LAST:event_btnDel_106ActionPerformed
 
-    private void btnReActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReActionPerformed
+    private void btnRef_106ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRef_106ActionPerformed
         // TODO add your handling code here:
         refresh();
-    }//GEN-LAST:event_btnReActionPerformed
+    }//GEN-LAST:event_btnRef_106ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
@@ -255,17 +245,15 @@ public class QuanLyMenu extends javax.swing.JPanel {
         txtMa_106.setText(dtm.getValueAt(row, 0).toString());
         txtTen_106.setText(dtm.getValueAt(row, 1).toString());
         txtGia_106.setText(dtm.getValueAt(row, 2).toString());
-        jTextField4.setText(dtm.getValueAt(row, 3).toString());
-        jTextField5.setText(dtm.getValueAt(row, 4).toString());
+        // combo box cbb_106
     }//GEN-LAST:event_jTable1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdd;
-    private javax.swing.JButton btnChange;
-    private javax.swing.JButton btnDel;
-    private javax.swing.JButton btnRe;
-    private javax.swing.JComboBox<String> cbb_106;
+    private javax.swing.JButton btnAdd_106;
+    private javax.swing.JButton btnChange_106;
+    private javax.swing.JButton btnDel_106;
+    private javax.swing.JButton btnRef_106;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -275,6 +263,7 @@ public class QuanLyMenu extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtGia_106;
+    private javax.swing.JTextField txtGia_107;
     private javax.swing.JTextField txtMa_106;
     private javax.swing.JTextField txtTen_106;
     // End of variables declaration//GEN-END:variables
