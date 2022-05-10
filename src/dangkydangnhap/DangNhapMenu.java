@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author trant
+ * @author tien
  */
 public class DangNhapMenu extends javax.swing.JFrame {
 
