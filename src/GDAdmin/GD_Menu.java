@@ -4,6 +4,11 @@
  */
 package GDAdmin;
 
+import GetAndSet.Menu;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author HoaiAnh
@@ -13,10 +18,32 @@ public class GD_Menu extends javax.swing.JFrame {
     /**
      * Creates new form Menu
      */
+    int selectedIndex;
+    menuDao qlService;
+    DefaultTableModel defaultTableModel;
+    private List<Menu> ql;
+    private DefaultTableModel model;
+    Menu menu;
+    menuDao menudao;
+    
     public GD_Menu() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        model = (DefaultTableModel)jTable1.getModel();
+        showTable();
+        menu = new Menu();
+        menudao = new menuDao();
     }
-
+    private void setTableData(List<Menu> ql){
+        for (Menu qly : ql){
+            defaultTableModel.addRow(new Object[]{qly.getMaDoAn(), qly.getTenDoAn(), qly.getLoaiDoAn(), qly.getGiaThanh()});
+        }
+    }
+    
+    
+    /**
+     * Creates new form quanLyNhap
+     */
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,7 +59,7 @@ public class GD_Menu extends javax.swing.JFrame {
         btnExit_106 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        txtMa_106 = new javax.swing.JTextField();
+        txtGiaBan_108 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -40,11 +67,13 @@ public class GD_Menu extends javax.swing.JFrame {
         btnDel_106 = new javax.swing.JButton();
         btnRef_106 = new javax.swing.JButton();
         btnAdd_106 = new javax.swing.JButton();
-        txtMa_107 = new javax.swing.JTextField();
+        txtTen_108 = new javax.swing.JTextField();
         txtMa_108 = new javax.swing.JTextField();
-        txtMa_109 = new javax.swing.JTextField();
+        txtPL_108 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jTextField1 = new javax.swing.JTextField();
+        btnDel_107 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,7 +113,7 @@ public class GD_Menu extends javax.swing.JFrame {
                 .addComponent(btnExit_106, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(306, Short.MAX_VALUE)
+                .addContainerGap(238, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(208, 208, 208))
         );
@@ -107,7 +136,7 @@ public class GD_Menu extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("MÃ MÓN:");
 
-        txtMa_106.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtGiaBan_108.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setText("TÊN MÓN:");
@@ -158,11 +187,16 @@ public class GD_Menu extends javax.swing.JFrame {
             }
         });
 
-        txtMa_107.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtTen_108.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         txtMa_108.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtMa_108.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMa_108ActionPerformed(evt);
+            }
+        });
 
-        txtMa_109.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtPL_108.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -179,23 +213,24 @@ public class GD_Menu extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        btnDel_107.setBackground(new java.awt.Color(255, 204, 204));
+        btnDel_107.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        btnDel_107.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DoAnVat/icon/xoa.png"))); // NOI18N
+        btnDel_107.setText("TÌM KIẾM THEO MÃ");
+        btnDel_107.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDel_107ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(46, 88, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(btnAdd_106)
-                        .addGap(60, 60, 60)
-                        .addComponent(btnChange_106)
-                        .addGap(59, 59, 59)
-                        .addComponent(btnDel_106, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64)
-                        .addComponent(btnRef_106)
-                        .addGap(59, 59, 59))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
@@ -204,11 +239,28 @@ public class GD_Menu extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addGap(40, 40, 40)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtMa_109, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMa_106, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMa_107, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPL_108, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtGiaBan_108, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTen_108, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtMa_108, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(170, 170, 170))))
+                        .addGap(170, 170, 170))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(btnAdd_106)
+                                .addGap(60, 60, 60)
+                                .addComponent(btnChange_106)
+                                .addGap(59, 59, 59))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnDel_107, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(btnDel_106, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(59, 59, 59)
+                                .addComponent(btnRef_106)))
+                        .addGap(83, 83, 83))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,14 +275,14 @@ public class GD_Menu extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(txtMa_108, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(txtMa_107, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtTen_108, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(15, 15, 15)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtMa_106, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtGiaBan_108, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtMa_109, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPL_108, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -238,8 +290,13 @@ public class GD_Menu extends javax.swing.JFrame {
                     .addComponent(btnAdd_106, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDel_106, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRef_106, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDel_107, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
@@ -261,7 +318,11 @@ public class GD_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnChange_106ActionPerformed
 
     private void btnDel_106ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDel_106ActionPerformed
-        // TODO add your handling code here:
+        selectedIndex = jTable1.getSelectedRow();
+        Menu qltv = ql.get(selectedIndex);
+        JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa không?");
+        new menuDao().delete(qltv.getMaDoAn());
+        showTable();
 
     }//GEN-LAST:event_btnDel_106ActionPerformed
 
@@ -271,7 +332,14 @@ public class GD_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRef_106ActionPerformed
 
     private void btnAdd_106ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd_106ActionPerformed
-        // TODO add your handling code here:
+        GD_Menu ql1 = new GD_Menu();
+        menu.setMaDoAn(txtGiaBan_108.getText());
+        menu.setTenDoAn(txtTen_108.getText());
+        menu.setLoaiDoAn(txtPL_108.getText());
+        menu.setGiaThanh(txtGiaBan_108.getText());
+        menudao.add(menu);
+        ql1.setVisible(true);
+        this.dispose();
 
     }//GEN-LAST:event_btnAdd_106ActionPerformed
 
@@ -280,6 +348,14 @@ public class GD_Menu extends javax.swing.JFrame {
         
         // combo box cbb_106
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void txtMa_108ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMa_108ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMa_108ActionPerformed
+
+    private void btnDel_107ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDel_107ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDel_107ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -322,6 +398,7 @@ public class GD_Menu extends javax.swing.JFrame {
     private javax.swing.JButton btnBack_106;
     private javax.swing.JButton btnChange_106;
     private javax.swing.JButton btnDel_106;
+    private javax.swing.JButton btnDel_107;
     private javax.swing.JButton btnExit_106;
     private javax.swing.JButton btnRef_106;
     private javax.swing.JLabel jLabel1;
@@ -333,9 +410,14 @@ public class GD_Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField txtMa_106;
-    private javax.swing.JTextField txtMa_107;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtGiaBan_108;
     private javax.swing.JTextField txtMa_108;
-    private javax.swing.JTextField txtMa_109;
+    private javax.swing.JTextField txtPL_108;
+    private javax.swing.JTextField txtTen_108;
     // End of variables declaration//GEN-END:variables
+
+    private void showTable() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
