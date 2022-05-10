@@ -3,9 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package QuanLyDoAnVat;
-
-
+package dangkydangnhap;
 
 /**
  *
@@ -16,7 +14,6 @@ public class DangKy extends javax.swing.JFrame {
     /**
      * Creates new form DangKyMayTinh
      */
-   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -164,9 +161,14 @@ public class DangKy extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    public DangKy() {
+        initComponents();
 
+    }
     private void btnBack_345ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack_345ActionPerformed
-  
+        DangNhapMenu dkmn = new DangNhapMenu();
+        dkmn.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnBack_345ActionPerformed
 
     private void btnDk_345ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDk_345ActionPerformed
