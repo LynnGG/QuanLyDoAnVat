@@ -3,10 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package QuanLyDoAnVat;
 
-import getAndSet.DangNhap;
-import getAndSet.Menu;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,16 +11,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import source.manageLogIn;
-import source.manageLogin;
 
 /**
  *
  * @author trant
  */
 public class DangNhapMenu extends javax.swing.JFrame {
-
-    manageLogin mlg = new manageLogin();
 
     public DangNhapMenu() {
         initComponents();
@@ -182,36 +175,7 @@ public class DangNhapMenu extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        DangNhap dn = new DangNhap();
-        dn.setTaiKhoan(taikhoantxt.getText());
-        dn.setMatKhau(txtPass_345.getText());
-
-        if (mlg.checkLogin(dn)) {
-            if (admin.isSelected() == true) {
-                if (!taikhoantxt.getText().equals("admin")) {
-                    JOptionPane.showMessageDialog(null, "Bạn Không Phải là ADMIN");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Đăng Nhập Thành Công");
-
-                    GiaoDienAdmin gda = new GiaoDienAdmin();
-                    gda.setVisible(true);
-                    this.setVisible(false);
-
-                }
-
-            } else {
-                JOptionPane.showMessageDialog(null, "Đăng Nhập Thành Công");
-
-                BanHang bh = new BanHang();
-                bh.setVisible(true);
-                this.setVisible(false);
-
-            }
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Đăng Nhập Thất Bại");
-
-        }
+       
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
