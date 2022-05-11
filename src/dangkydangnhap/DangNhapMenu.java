@@ -5,10 +5,14 @@
  */
 package dangkydangnhap;
 
-import GDAdmin.GiaoDienAdmin;
+import Controller.DK;
+import GDAdmin.GD_Admin;
+import GetAndSet.TaiKhoan;
+import connect.connectServer;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -219,44 +223,21 @@ public class DangNhapMenu extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        if (admin.isSelected()) {
-            if (taikhoantxt.getText().equals("admin") && String.valueOf(txtPass_345.getPassword()).equals("admin")) {
-                GiaoDienAdmin GDA = new GiaoDienAdmin();
-                GDA.setVisible(true);
-                this.setVisible(false);
-            } else {
-                JOptionPane.showMessageDialog(null, "Tài khoản/ Mật khẩu sai hoặc tài khoản không nằm trong địa phận Admin");
-            }
-        }
-        if (nv.isSelected()) {
-            if (taikhoantxt.getText().equals("admin") && String.valueOf(txtPass_345.getPassword()).equals("admin")) {
-                GiaoDienAdmin GDA = new GiaoDienAdmin();
-                GDA.setVisible(true);
-                this.setVisible(false);
-            } else {
-                JOptionPane.showMessageDialog(null, "Tài khoản/ Mật khẩu sai");
-            }
-        }
-        System.out.println(String.valueOf(txtPass_345.getPassword()));
         try {
-            Connection con = connect.getConnection(url, user, password);
-            String sql = "select* from taiKhoan where taiKhoan = ? and matKhau =?";//truy vấn đến sql
-            PreparedStatement ps = con.prepareCall(sql);
-            ps.setString(1, taikhoantxt.getText());
-            ps.setString(2, txtPass_345.getText());
-            rs = ps.executeQuery();
-            
-            if(taikhoantxt.getText().equals("")|| txtPass_345.getText().equals("")){
+            TaiKhoan dk = new TaiKhoan();
+            dk.setTaiKhoan(taikhoantxt.getText());
+            dk.setMatKhau(String.valueOf(txtPass_345.getPassword()));
+            DK dkDK = new DK();
+            if (taikhoantxt.getText().equals("") || String.valueOf(txtPass_345.getPassword()).equals("")) {
                 JOptionPane.showMessageDialog(this, "Chưa nhập User và Password");
-            }else 
-                if(rs.next()){
-                    GiaoDienAdmin GDA = new GiaoDienAdmin();
-                    GDA.setVisible(true);
-            this.dispose();
-                    JOptionPane.showMessageDialog(this, "Đăng nhập thành công!");
-                }else {
-                    JOptionPane.showMessageDialog(this, "Đăng nhập thất bại!");
-                }
+            } else if (dkDK.checkLogin(dk)) {
+                JOptionPane.showMessageDialog(this, "Đăng nhập thành công!");
+                GD_Admin GDA = new GD_Admin();
+                GDA.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Đăng nhập thất bại!");
+            }
         } catch (Exception e) {
         }
 

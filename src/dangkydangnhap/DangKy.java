@@ -5,7 +5,13 @@
  */
 package dangkydangnhap;
 
+import Controller.DK;
+import GetAndSet.TaiKhoan;
+import connect.connectServer;
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -179,18 +185,34 @@ public class DangKy extends javax.swing.JFrame {
         String t2_106 = txtpass_345.getText();
         String t3_106 = txtsdt_345.getText();
         String t4_106 = txtName_345.getText();
-        Connection con = connect.getConnection(url, user, password);
+        connectServer cs = new connectServer();
+        Connection con = cs.connectSQL("sa", "123", "LAPTOP-TS26SMTG\\TTRANG", "quanlydoanvat");
         String userName_106 = "select* from taiKhoan where taiKhoan = ? ";//truy vấn đến sql
-        if(t1_106.equals(userName_106)){
-                JOptionPane.showMessageDialog(this, "Tài Khoản đã tồn tại!");
-            }
-        if(t1_106.equals("")|| t2_106.equals("") || t3_106.equals("") || t4_106.equals("")){
-                JOptionPane.showMessageDialog(this, "Bạn không được để trống thông tin nào!");
-            }else{
-                DangNhapMenu dnmn = new DangNhapMenu();
-                dnmn.setVisible(true);
-                this.setVisible(false);
+        if (t1_106.equals(userName_106)) {
+            JOptionPane.showMessageDialog(this, "Tài Khoản đã tồn tại!");
         }
+        if (t1_106.equals("") || t2_106.equals("") || t3_106.equals("") || t4_106.equals("")) {
+            JOptionPane.showMessageDialog(this, "Bạn không được để trống thông tin nào!");
+        } else {
+            TaiKhoan dk = new TaiKhoan();
+            dk.setTaiKhoan(t1_106);
+            dk.setMatKhau(t2_106);
+            dk.setHoTen(t3_106);
+            dk.setSdt(t4_106);
+            DK dkDK = new DK();
+            try {
+                if (dkDK.checkTK(dk)) {
+                    JOptionPane.showMessageDialog(null, "TK tồn tại");
+                } else {
+                    dkDK.addLogin(dk);
+                    JOptionPane.showMessageDialog(null, "Tạo TK thành công");
+
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+
     }//GEN-LAST:event_btnDk_345ActionPerformed
 
     /**
