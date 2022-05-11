@@ -5,7 +5,10 @@
  */
 package dangkydangnhap;
 
-import GDAdmin.GD_Admin;
+import GDAdmin.GiaoDienAdmin;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -61,6 +64,12 @@ public class DangNhapMenu extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel2.setText("TÀI KHOẢN:");
+
+        taikhoantxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taikhoantxtActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("MẬT KHẨU:");
@@ -118,9 +127,6 @@ public class DangNhapMenu extends javax.swing.JFrame {
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(59, 59, 59)
-                                .addComponent(jLabel1))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(admin, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(88, 88, 88)
@@ -145,7 +151,10 @@ public class DangNhapMenu extends javax.swing.JFrame {
                         .addGap(87, 87, 87)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(475, 475, 475)
-                        .addComponent(jLabel4)))
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(317, 317, 317)
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -156,9 +165,9 @@ public class DangNhapMenu extends javax.swing.JFrame {
                         .addGap(50, 50, 50)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
+                        .addGap(21, 21, 21)
                         .addComponent(jLabel1)
-                        .addGap(34, 34, 34)
+                        .addGap(41, 41, 41)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(admin)
                             .addComponent(nv))
@@ -194,7 +203,7 @@ public class DangNhapMenu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, Short.MAX_VALUE)
         );
 
         pack();
@@ -212,23 +221,44 @@ public class DangNhapMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (admin.isSelected()) {
             if (taikhoantxt.getText().equals("admin") && String.valueOf(txtPass_345.getPassword()).equals("admin")) {
-                GD_Admin GDA = new GD_Admin();
+                GiaoDienAdmin GDA = new GiaoDienAdmin();
                 GDA.setVisible(true);
                 this.setVisible(false);
             } else {
-                JOptionPane.showMessageDialog(null, "TK MK SAI OR TK KHÔNG NẰM TRONG ĐỊA PHẬN ADMIN");
+                JOptionPane.showMessageDialog(null, "Tài khoản/ Mật khẩu sai hoặc tài khoản không nằm trong địa phận Admin");
             }
         }
         if (nv.isSelected()) {
             if (taikhoantxt.getText().equals("admin") && String.valueOf(txtPass_345.getPassword()).equals("admin")) {
-                GD_Admin GDA = new GD_Admin();
+                GiaoDienAdmin GDA = new GiaoDienAdmin();
                 GDA.setVisible(true);
                 this.setVisible(false);
             } else {
-                JOptionPane.showMessageDialog(null, "TK MK SAI");
+                JOptionPane.showMessageDialog(null, "Tài khoản/ Mật khẩu sai");
             }
         }
         System.out.println(String.valueOf(txtPass_345.getPassword()));
+        try {
+            Connection con = connect.getConnection(url, user, password);
+            String sql = "select* from taiKhoan where taiKhoan = ? and matKhau =?";//truy vấn đến sql
+            PreparedStatement ps = con.prepareCall(sql);
+            ps.setString(1, taikhoantxt.getText());
+            ps.setString(2, txtPass_345.getText());
+            rs = ps.executeQuery();
+            
+            if(taikhoantxt.getText().equals("")|| txtPass_345.getText().equals("")){
+                JOptionPane.showMessageDialog(this, "Chưa nhập User và Password");
+            }else 
+                if(rs.next()){
+                    GiaoDienAdmin GDA = new GiaoDienAdmin();
+                    GDA.setVisible(true);
+            this.dispose();
+                    JOptionPane.showMessageDialog(this, "Đăng nhập thành công!");
+                }else {
+                    JOptionPane.showMessageDialog(this, "Đăng nhập thất bại!");
+                }
+        } catch (Exception e) {
+        }
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -240,6 +270,10 @@ public class DangNhapMenu extends javax.swing.JFrame {
             txtPass_345.setEchoChar('*');
         }
     }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void taikhoantxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taikhoantxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_taikhoantxtActionPerformed
 
     /**
      * @param args the command line arguments

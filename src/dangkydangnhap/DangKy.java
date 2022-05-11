@@ -5,6 +5,9 @@
  */
 package dangkydangnhap;
 
+import java.sql.Connection;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author trant
@@ -32,7 +35,7 @@ public class DangKy extends javax.swing.JFrame {
         txtsdt_345 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtName_345 = new javax.swing.JTextField();
-        btnBack_345 = new javax.swing.JButton();
+        btnLIn_345 = new javax.swing.JButton();
         btnDk_345 = new javax.swing.JButton();
         txtpass_345 = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
@@ -54,13 +57,13 @@ public class DangKy extends javax.swing.JFrame {
 
         jLabel5.setText("HỌ TÊN:");
 
-        btnBack_345.setBackground(new java.awt.Color(153, 153, 255));
-        btnBack_345.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        btnBack_345.setForeground(new java.awt.Color(204, 51, 0));
-        btnBack_345.setText("ĐĂNG NHẬP");
-        btnBack_345.addActionListener(new java.awt.event.ActionListener() {
+        btnLIn_345.setBackground(new java.awt.Color(153, 153, 255));
+        btnLIn_345.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnLIn_345.setForeground(new java.awt.Color(204, 51, 0));
+        btnLIn_345.setText("ĐĂNG NHẬP");
+        btnLIn_345.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBack_345ActionPerformed(evt);
+                btnLIn_345ActionPerformed(evt);
             }
         });
 
@@ -87,7 +90,7 @@ public class DangKy extends javax.swing.JFrame {
                         .addGap(256, 256, 256)
                         .addComponent(btnDk_345, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
-                        .addComponent(btnBack_345))
+                        .addComponent(btnLIn_345))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -142,7 +145,7 @@ public class DangKy extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDk_345, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBack_345, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnLIn_345, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
@@ -165,14 +168,29 @@ public class DangKy extends javax.swing.JFrame {
         initComponents();
 
     }
-    private void btnBack_345ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack_345ActionPerformed
-        DangNhapMenu dkmn = new DangNhapMenu();
-        dkmn.setVisible(true);
+    private void btnLIn_345ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLIn_345ActionPerformed
+        DangNhapMenu dnmn = new DangNhapMenu();
+        dnmn.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_btnBack_345ActionPerformed
+    }//GEN-LAST:event_btnLIn_345ActionPerformed
 
     private void btnDk_345ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDk_345ActionPerformed
-
+        String t1_106 = txt1_345.getText();
+        String t2_106 = txtpass_345.getText();
+        String t3_106 = txtsdt_345.getText();
+        String t4_106 = txtName_345.getText();
+        Connection con = connect.getConnection(url, user, password);
+        String userName_106 = "select* from taiKhoan where taiKhoan = ? ";//truy vấn đến sql
+        if(t1_106.equals(userName_106)){
+                JOptionPane.showMessageDialog(this, "Tài Khoản đã tồn tại!");
+            }
+        if(t1_106.equals("")|| t2_106.equals("") || t3_106.equals("") || t4_106.equals("")){
+                JOptionPane.showMessageDialog(this, "Bạn không được để trống thông tin nào!");
+            }else{
+                DangNhapMenu dnmn = new DangNhapMenu();
+                dnmn.setVisible(true);
+                this.setVisible(false);
+        }
     }//GEN-LAST:event_btnDk_345ActionPerformed
 
     /**
@@ -214,8 +232,8 @@ public class DangKy extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack_345;
     private javax.swing.JButton btnDk_345;
+    private javax.swing.JButton btnLIn_345;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
