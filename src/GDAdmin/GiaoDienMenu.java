@@ -4,7 +4,7 @@
  */
 package GDAdmin;
 
-import Controller.DK;
+import Controller.MenuDao;
 import GetAndSet.Menu;
 import static java.time.zone.ZoneRulesProvider.refresh;
 import java.util.List;
@@ -21,19 +21,19 @@ public class GiaoDienMenu extends javax.swing.JPanel {
      * Creates new form GiaoDienMenu
      */
     int selectedIndex;
-    DK qlService;
+    MenuDao qlService;
     DefaultTableModel defaultTableModel;
     private List<Menu> ql;
     private DefaultTableModel model;
     Menu menu;
-    DK menudao;
+    MenuDao menudao;
     public GiaoDienMenu() {
         initComponents();
         this.setLocationRelativeTo(null);
         model = (DefaultTableModel)jTable1.getModel();
         showTable();
         menu = new Menu();
-        menudao = new DK();
+        menudao = new MenuDao();
     }
 
     /**
@@ -283,7 +283,7 @@ public class GiaoDienMenu extends javax.swing.JPanel {
         selectedIndex = jTable1.getSelectedRow();
         Menu qltv = ql.get(selectedIndex);
         JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa không?");
-        new DK().deleteMenu(qltv.getMaDoAn());
+        new MenuDao().deleteMenu(qltv.getMaDoAn());
         showTable();
     }//GEN-LAST:event_btnDel_106ActionPerformed
 
