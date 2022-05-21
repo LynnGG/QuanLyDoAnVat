@@ -21,7 +21,7 @@ import java.util.ArrayList;
  */
 public class JDBCConnection {
     public static Connection JDBCConnection() {
-        final String Url = "jdbc:sqlserver://LAPTOP-NUMGUVDK:1433;databaseName=quanlydoanvat";
+        final String Url = "jdbc:sqlserver://DESKTOP-3QBD5U9\\TIENDATSQLSV19:1433;databaseName=quanlydoanvat";
         final String user = "sa";
         final String pass = "huan26052002";
         try {

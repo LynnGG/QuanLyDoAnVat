@@ -1,6 +1,7 @@
 ﻿create database quanlydoanvat
 go
 use quanlydoanvat
+go
 create table Menu
 ( maDoAn nvarchar(10) not null,
 tenDoAn nvarchar(50) not null,

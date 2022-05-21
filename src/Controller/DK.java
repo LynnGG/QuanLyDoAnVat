@@ -26,7 +26,7 @@ public class DK {
 
     public List<TaiKhoan> getListLogin() {
         connectServer cnn = new connectServer();
-        Connection con = cnn.connectSQL("sa", "123", "LAPTOP-TS26SMTG\\TTRANG", "quanlydoanvat");
+        Connection con = cnn.connectSQL("sa", "123", "DESKTOP-3QBD5U9\\TIENDATSQLSV19", "quanlydoanvat");
         Statement stm = null;
         ResultSet rs = null;
         String sql = "Select * from taiKhoan";
