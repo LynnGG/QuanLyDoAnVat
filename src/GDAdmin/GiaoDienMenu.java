@@ -2,7 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package DoAnVat;
+package GDAdmin;
+
+import Controller.DK;
+import GetAndSet.Menu;
+import static java.time.zone.ZoneRulesProvider.refresh;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,8 +20,20 @@ public class GiaoDienMenu extends javax.swing.JPanel {
     /**
      * Creates new form GiaoDienMenu
      */
+    int selectedIndex;
+    DK qlService;
+    DefaultTableModel defaultTableModel;
+    private List<Menu> ql;
+    private DefaultTableModel model;
+    Menu menu;
+    DK menudao;
     public GiaoDienMenu() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        model = (DefaultTableModel)jTable1.getModel();
+        showTable();
+        menu = new Menu();
+        menudao = new DK();
     }
 
     /**
@@ -219,7 +238,7 @@ public class GiaoDienMenu extends javax.swing.JPanel {
                 .addComponent(btnExit_106)
                 .addGap(41, 41, 41))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 14, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -244,15 +263,28 @@ public class GiaoDienMenu extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdd_106ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd_106ActionPerformed
-        // TODO add your handling code here:
+        GiaoDienMenu ql1 = new GiaoDienMenu();
+        menu.setMaDoAn(txtMa_108.getText());
+        menu.setTenDoAn(txtMa_107.getText());
+        menu.setLoaiDoAn(txtMa_106.getText());
+        menu.setGiaThanh(txtMa_109.getText());
+        menudao.addMenu(menu);
+        ql1.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnAdd_106ActionPerformed
 
     private void btnChange_106ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChange_106ActionPerformed
-        // TODO add your handling code here:
+        Menu mn = new Menu(txtMa_108.getText(), txtMa_107.getText(), txtMa_106.getText(), txtMa_109.getText());
+        menudao.editMenu(mn);
+        refresh();
     }//GEN-LAST:event_btnChange_106ActionPerformed
 
     private void btnDel_106ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDel_106ActionPerformed
-        // TODO add your handling code here:
+        selectedIndex = jTable1.getSelectedRow();
+        Menu qltv = ql.get(selectedIndex);
+        JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa không?");
+        new DK().deleteMenu(qltv.getMaDoAn());
+        showTable();
     }//GEN-LAST:event_btnDel_106ActionPerformed
 
     private void btnRef_106ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRef_106ActionPerformed
@@ -283,4 +315,16 @@ public class GiaoDienMenu extends javax.swing.JPanel {
     private javax.swing.JTextField txtMa_108;
     private javax.swing.JTextField txtMa_109;
     // End of variables declaration//GEN-END:variables
+
+    private void setLocationRelativeTo(Object object) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void showTable() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void dispose() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

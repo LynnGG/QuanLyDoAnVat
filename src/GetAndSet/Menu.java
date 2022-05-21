@@ -56,5 +56,9 @@ public class Menu {
     public void setGiaThanh(String giaThanh) {
         this.giaThanh = giaThanh;
     }
+
+    public void getMaDoAn(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
