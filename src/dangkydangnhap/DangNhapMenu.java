@@ -6,8 +6,10 @@
 package dangkydangnhap;
 
 import Controller.DK;
-import GDAdmin.GD_Admin;
+import Controller.LoginC;
+import GDAdmin.GiaoDienAdmin;
 import GetAndSet.TaiKhoan;
+import Member.giaoDienChung;
 import connect.connectServer;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -31,7 +33,8 @@ public class DangNhapMenu extends javax.swing.JFrame {
         initComponents();
 
     }
-
+    LoginC lc = new LoginC();
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -108,7 +111,7 @@ public class DangNhapMenu extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dangkydangnhap/Steak-icon.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon("/home/lynn/GIT/QuanLyDoAnVat/src/dangkydangnhap/Steak-icon.png")); // NOI18N
 
         jButton3.setBackground(new java.awt.Color(153, 255, 153));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -207,7 +210,7 @@ public class DangNhapMenu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
         );
 
         pack();
@@ -223,23 +226,44 @@ public class DangNhapMenu extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        try {
-            TaiKhoan dk = new TaiKhoan();
-            dk.setTaiKhoan(taikhoantxt.getText());
-            dk.setMatKhau(String.valueOf(txtPass_345.getPassword()));
-            DK dkDK = new DK();
-            if (taikhoantxt.getText().equals("") || String.valueOf(txtPass_345.getPassword()).equals("")) {
-                JOptionPane.showMessageDialog(this, "Chưa nhập User và Password");
-            } else if (dkDK.checkLogin(dk)) {
-                JOptionPane.showMessageDialog(this, "Đăng nhập thành công!");
-                GD_Admin GDA = new GD_Admin();
-                GDA.setVisible(true);
-                this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(this, "Đăng nhập thất bại!");
-            }
-        } catch (Exception e) {
+        String k = "";
+        if (admin.isSelected()) {
+            k = "Admin";
         }
+        if (nv.isSelected()) {
+            k = "Nhân Viên";
+        }
+        TaiKhoan dk = new TaiKhoan();
+        dk.setTaiKhoan(taikhoantxt.getText());
+        dk.setMatKhau(String.valueOf(txtPass_345.getPassword()));
+        DK dkDK = new DK();
+        if (taikhoantxt.getText().equals("") || String.valueOf(txtPass_345.getPassword()).equals("")) {
+            JOptionPane.showMessageDialog(this, "Chưa nhập User và Password");
+        } else if (dkDK.checkLogin(dk)) {
+            TaiKhoan tk = new TaiKhoan();
+            tk = lc.getTK(dk);
+            if (tk.getChucVu().equals(k)) {
+                if (k.equals("Admin")) {
+                    JOptionPane.showMessageDialog(this, "Đăng nhập thành công!");
+                    GiaoDienAdmin GDA = new GiaoDienAdmin();
+                    GDA.setVisible(true);
+                    this.dispose();
+                }
+                if (k.equals("Nhân Viên")) {
+                    JOptionPane.showMessageDialog(this, "Đăng nhập thành công!");
+                    giaoDienChung GDC = new giaoDienChung(tk);
+                    GDC.setVisible(true);
+                    this.dispose();
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Chọn Sai Chức Vụ!");
+
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Đăng nhập thất bại!");
+        }
+
 
     }//GEN-LAST:event_jButton3ActionPerformed
 

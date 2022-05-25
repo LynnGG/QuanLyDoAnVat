@@ -5,104 +5,114 @@
 package Controller;
 
 import GetAndSet.Menu;
-import connect.JDBCConnection;
+import GetAndSet.Menu;
 import connect.connectServer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author ACER
  */
-public class MenuDao {
-    public void addMenu(Menu tl){
-     Connection connection = JDBCConnection.JDBCConnection();          
-            String sql = "INSERT INTO maDoAn(maDoAn, tenDoAn, loaiDoAn, giaThanh) "
-                    + "values (?,?,?,?) ";            
-            try {
-                PreparedStatement preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.setString(1, tl.getMaDoAn());
-                preparedStatement.setString(2, tl.getTenDoAn());
-                preparedStatement.setString(3, tl.getLoaiDoAn());
-                preparedStatement.setString(4, tl.getGiaThanh());
-//                int rs = preparedStatement.executeUpdate();
-//                System.out.println(rs);
-                preparedStatement.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-    public int updateMenu(Menu tl){
-        Connection connection = JDBCConnection.JDBCConnection();
-        String sql = "Update maDoAn set tenDoAn = ?, loaiDoAn = ?, giaThanh = ?, where maDoAn = ? ";
+public class Menu_C {
+
+    public List<Menu> getListMenu() {
+        connectServer cnn = new connectServer();
+        Connection con = cnn.connect();
+        Statement stm = null;
+        ResultSet rs = null;
+        String sql = "Select * from Menu";
+        List<Menu> listMenu = new ArrayList<>();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            stm = con.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                Menu dn = new Menu(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+                listMenu.add(dn);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return listMenu;
+    }
+
+    public void addMenu(Menu tl) {
+        connectServer cnn = new connectServer();
+        Connection con = cnn.connect();
+        String sql = "INSERT INTO Menu (maDoAn, tenDoAn, loaiDoAn, giaThanh) "
+                + "values (?,?,?,?) ";
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, tl.getMaDoAn());
             preparedStatement.setString(2, tl.getTenDoAn());
             preparedStatement.setString(3, tl.getLoaiDoAn());
             preparedStatement.setString(4, tl.getGiaThanh());
-            if(preparedStatement.executeUpdate()>0){
-                System.out.println("Update thành công!");
-                return 1;
-            };
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return -1;
-    }
-    public void deleteMenu(String maDoAn){
-       Connection connection = JDBCConnection.JDBCConnection();
-        String sql = "delete from id where m maDoAn = ?";
-        
-        try{
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, maDoAn);           
-            int rs = preparedStatement.executeUpdate();
-                System.out.println(rs);
+            preparedStatement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-     public void editMenu(Menu menu) {
+
+    public void editMenu(Menu tl) {
         connectServer cnn = new connectServer();
+        Connection con = cnn.connect();
         PreparedStatement pstmt = null;
-        String Sql = "update Menu set maDoAn = ? , tenDoAn = ?, loaiDoAn = ?, giaThanh = ?";
+
+        String sql = "Update Menu set tenDoAn = ?, loaiDoAn = ?, giaThanh = ? where maDoAn = ? ";
         try {
-            Connection con = cnn.connectSQL("sa", "123", "LAPTOP-TS26SMTG\\TTRANG", "quanlydoanvat");
-            pstmt = con.prepareCall(Sql);
-            pstmt.setString(1, menu.getMaDoAn());
-            pstmt.setString(2, menu.getTenDoAn());
-            pstmt.setString(3, menu.getLoaiDoAn());
-            pstmt.setString(4, menu.getGiaThanh());
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, tl.getTenDoAn());
+            pstmt.setString(2, tl.getLoaiDoAn());
+            pstmt.setString(3, tl.getGiaThanh());
+            pstmt.setString(4, tl.getMaDoAn());
 
             pstmt.execute();
             JOptionPane.showMessageDialog(null, "Chỉnh Sửa Thành Công Thành Công");
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
-     
-    public ArrayList<Menu> findMenu(String maDoAn){
-        ArrayList<Menu> ql = new ArrayList<Menu>();
-        Connection connection = JDBCConnection.JDBCConnection();
-        String sql = "select * from Menu where maDoAn like ?";
+
+    public void deleteMenu(Menu m) {
+        connectServer cnn = new connectServer();
+        Connection con = cnn.connect();
+        String sql = "delete from Menu where maDoAn = ?";
+
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1,"%"+maDoAn+"%");
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setString(1, m.getMaDoAn());
+            int rs = preparedStatement.executeUpdate();
+            System.out.println(rs);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<Menu> findMenu(String key) {
+        List<Menu> ql = new ArrayList<>();
+        connectServer cnn = new connectServer();
+        Connection con = cnn.connect();
+        String sql = "select * from Menu where loaiDoAn like ?";
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setString(1, "%" + key + "%");
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 Menu tl = new Menu();
-                tl.setMaDoAn(rs.getString("maDoAn"));
-                tl.setTenDoAn(rs.getString("tenDoAn"));
-                tl.setLoaiDoAn(rs.getString("loaiDoAn"));
-                tl.setGiaThanh(rs.getString("giaThanh"));
+                tl.setMaDoAn(rs.getString(1));
+                tl.setTenDoAn(rs.getString(2));
+                tl.setLoaiDoAn(rs.getString(3));
+                tl.setGiaThanh(rs.getString(4));
                 ql.add(tl);
             }
+            return ql;
+
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -12,12 +12,12 @@ package GetAndSet;
 public class ThongKe {
     private String maHoaDon;
     private String ngayNhapHoaDon;
-    private String soTienHoaDon;
+    private int soTienHoaDon;
 
     public ThongKe() {
     }
 
-    public ThongKe(String maHoaDon, String ngayNhapHoaDon, String soTienHoaDon) {
+    public ThongKe(String maHoaDon, String ngayNhapHoaDon, int soTienHoaDon) {
         this.maHoaDon = maHoaDon;
         this.ngayNhapHoaDon = ngayNhapHoaDon;
         this.soTienHoaDon = soTienHoaDon;
@@ -39,11 +39,11 @@ public class ThongKe {
         this.ngayNhapHoaDon = ngayNhapHoaDon;
     }
 
-    public String getSoTienHoaDon() {
+    public int getSoTienHoaDon() {
         return soTienHoaDon;
     }
 
-    public void setSoTienHoaDon(String soTienHoaDon) {
+    public void setSoTienHoaDon(int soTienHoaDon) {
         this.soTienHoaDon = soTienHoaDon;
     }
     

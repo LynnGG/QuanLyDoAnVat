@@ -14,7 +14,8 @@ import java.sql.SQLException;
  * @author lynn
  */
 public class connectServer {
-     public Connection connectSQL(String user,String pass,String serverName,String dataName) {
+
+    public Connection connectSQL(String user, String pass, String serverName, String dataName) {
 // Create datasource. 
         SQLServerDataSource ds = new SQLServerDataSource();
         ds.setUser(user);
@@ -32,5 +33,9 @@ public class connectServer {
         }
         return null;
     }
-    
+
+    public Connection connect() {
+        connectServer cnn = new connectServer();
+        return cnn.connectSQL("sa", "Kutega123@", "localhost\\SQLEXPRESS", "quanlydoanvat");
+    }
 }
