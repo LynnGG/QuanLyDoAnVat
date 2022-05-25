@@ -5,7 +5,7 @@ go
 create table Menu
 ( maDoAn nvarchar(10) not null,
 tenDoAn nvarchar(50) not null,
-loạiDoAn nvarchar(50) not null,
+loaiDoAn nvarchar(50) not null,
 giaThanh nvarchar(50) not null,
 primary key (maDoAn)
 )
@@ -21,18 +21,13 @@ diaChi nvarchar(30) not null,
 primary key(taiKhoan)
 )
 go
-create table baoCao
-(id int not null IDENTITY(1,1),
-baoCao nvarchar(50) not null,
-phanhoi nvarchar(50) not null,
-primary key(id)
-)
-go
 create table thongKe
 ( maHoaDon nvarchar(20) not null,
- ngayNhapHoaDon nvarchar(20) not null,
- soTienHoaDon nvarchar(50) not null,
+ ngayNhapHoaDon datetime,
+ soTienHoaDon int,
  primary key(maHoaDon)
  )
  
-
+INSERT INTO taiKhoan(taiKhoan,matKhau,hoTen,sdt,chucVu,diaChi)
+	VALUES('admin','admin','admin','admin','Admin','');
+	
