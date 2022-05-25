@@ -5,7 +5,7 @@
  */
 package dangkydangnhap;
 
-import Controller.DK;
+import Controller.LoginC;
 import Controller.LoginC;
 import GDAdmin.GiaoDienAdmin;
 import GetAndSet.TaiKhoan;
@@ -236,7 +236,7 @@ public class DangNhapMenu extends javax.swing.JFrame {
         TaiKhoan dk = new TaiKhoan();
         dk.setTaiKhoan(taikhoantxt.getText());
         dk.setMatKhau(String.valueOf(txtPass_345.getPassword()));
-        DK dkDK = new DK();
+        LoginC dkDK = new LoginC();
         if (taikhoantxt.getText().equals("") || String.valueOf(txtPass_345.getPassword()).equals("")) {
             JOptionPane.showMessageDialog(this, "Chưa nhập User và Password");
         } else if (dkDK.checkLogin(dk)) {

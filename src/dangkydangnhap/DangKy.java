@@ -5,7 +5,7 @@
  */
 package dangkydangnhap;
 
-import Controller.DK;
+import Controller.LoginC;
 import GetAndSet.TaiKhoan;
 import connect.connectServer;
 import java.sql.Connection;
@@ -208,7 +208,7 @@ public class DangKy extends javax.swing.JFrame {
             dk.setHoTen(t3_106);
             dk.setSdt(t4_106);
             dk.setDiaChi(t5_106);
-            DK dkDK = new DK();
+            LoginC dkDK = new LoginC();
             try {
                 if (dkDK.checkTK(dk)) {
                     JOptionPane.showMessageDialog(null, "TK tồn tại");

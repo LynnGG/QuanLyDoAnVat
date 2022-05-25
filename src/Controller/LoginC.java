@@ -123,6 +123,17 @@ public class LoginC {
         return false;
     }
 
+    public boolean checkTK(TaiKhoan dn) {
+        List<TaiKhoan> listTaiKhoan = new ArrayList<>();
+        listTaiKhoan = getListLogin();
+        for (TaiKhoan d : listTaiKhoan) {
+            if (d.getTaiKhoan().equals(dn.getTaiKhoan())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public TaiKhoan getTK(TaiKhoan dn) {
         List<TaiKhoan> listTaiKhoan = new ArrayList<>();
         listTaiKhoan = getListLogin();
