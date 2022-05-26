@@ -529,13 +529,13 @@ public class giaoDienChung extends javax.swing.JFrame {
 
         for (int count = 0; count < dtm2.getRowCount(); count++) {
             txt.setText(txt.getText() + dtm2.getValueAt(count, 0).toString()
-                    + "\t" + dtm2.getValueAt(count, 1).toString()
-                    + "\t" + String.valueOf(Integer.parseInt(dtm2.getValueAt(count, 1).toString()) * Integer.parseInt(dtm2.getValueAt(count, 2).toString()))
+                    + "\t\t" + dtm2.getValueAt(count, 1).toString()
+                    + "\t\t" + String.valueOf(Integer.parseInt(dtm2.getValueAt(count, 1).toString()) * Integer.parseInt(dtm2.getValueAt(count, 2).toString()))
                     + "\t\t\n");
         }
         txt.setText(txt.getText() + "------------------------------------------------------------------------------------------------------\t\n");
 
-        txt.setText(txt.getText() + "\t\t\t Thành Tiền : " + moneyTxt.getText() + "\n");
+        txt.setText(txt.getText() + "\t\t\t Tổng Tiền : " + moneyTxt.getText() + "\n");
 
         try {
             txt.print();
@@ -546,6 +546,7 @@ public class giaoDienChung extends javax.swing.JFrame {
             Logger.getLogger(giaoDienChung.class.getName()).log(Level.SEVERE, null, ex);
         }
         dtm2.setNumRows(0);
+        moneyTxt.setText("0");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
