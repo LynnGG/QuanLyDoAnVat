@@ -250,11 +250,6 @@
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/home/lynn/GIT/QuanLyDoAnVat/src/dangkydangnhap/Steak-icon.png"/>
-            </Property>
-          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton3">
           <Properties>

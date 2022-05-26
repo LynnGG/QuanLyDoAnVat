@@ -36,6 +36,6 @@ public class connectServer {
 
     public Connection connect() {
         connectServer cnn = new connectServer();
-        return cnn.connectSQL("sa", "Kutega123@", "localhost\\SQLEXPRESS", "quanlydoanvat");
+        return cnn.connectSQL("sa", "123", "LAPTOP-TS26SMTG\\TTRANG", "quanlydoanvat");
     }
 }

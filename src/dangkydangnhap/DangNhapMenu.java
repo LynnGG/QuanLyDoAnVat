@@ -231,7 +231,7 @@ public class DangNhapMenu extends javax.swing.JFrame {
             k = "Admin";
         }
         if (nv.isSelected()) {
-            k = "Nhân Viên";
+            k = "NV";
         }
         TaiKhoan dk = new TaiKhoan();
         dk.setTaiKhoan(taikhoantxt.getText());
@@ -249,7 +249,7 @@ public class DangNhapMenu extends javax.swing.JFrame {
                     GDA.setVisible(true);
                     this.dispose();
                 }
-                if (k.equals("Nhân Viên")) {
+                if (k.equals("NV")) {
                     JOptionPane.showMessageDialog(this, "Đăng nhập thành công!");
                     giaoDienChung GDC = new giaoDienChung(tk);
                     GDC.setVisible(true);
