@@ -63,6 +63,7 @@ public class GiaoDienAdmin extends javax.swing.JFrame {
         jbmenu.setBackground(new java.awt.Color(0, 153, 102));
         jbmenu.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jbmenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jbmenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GDAdmin/menu.png"))); // NOI18N
         jbmenu.setText("QUẢN LÝ MENU");
 
         javax.swing.GroupLayout pnMenu_106Layout = new javax.swing.GroupLayout(pnMenu_106);
@@ -85,17 +86,18 @@ public class GiaoDienAdmin extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(239, 255, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/banhtrangtron.png"))); // NOI18N
         jLabel1.setText("BÁN ĐỒ ĂN VẶT");
 
         javax.swing.GroupLayout pnFood_106Layout = new javax.swing.GroupLayout(pnFood_106);
         pnFood_106.setLayout(pnFood_106Layout);
         pnFood_106Layout.setHorizontalGroup(
             pnFood_106Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnFood_106Layout.setVerticalGroup(
             pnFood_106Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pnNVien_106.setBackground(new java.awt.Color(0, 204, 204));
@@ -103,7 +105,9 @@ public class GiaoDienAdmin extends javax.swing.JFrame {
         jbquanlynhanvien.setBackground(new java.awt.Color(0, 204, 204));
         jbquanlynhanvien.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jbquanlynhanvien.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jbquanlynhanvien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GDAdmin/icNV1.png"))); // NOI18N
         jbquanlynhanvien.setText("QUẢN LÝ NHÂN VIÊN");
+        jbquanlynhanvien.setToolTipText("");
 
         javax.swing.GroupLayout pnNVien_106Layout = new javax.swing.GroupLayout(pnNVien_106);
         pnNVien_106.setLayout(pnNVien_106Layout);
@@ -121,6 +125,7 @@ public class GiaoDienAdmin extends javax.swing.JFrame {
         jbthongke.setBackground(new java.awt.Color(0, 204, 204));
         jbthongke.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jbthongke.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jbthongke.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GDAdmin/thke.jpg"))); // NOI18N
         jbthongke.setText("THỐNG KÊ");
 
         javax.swing.GroupLayout pnThongKe_106Layout = new javax.swing.GroupLayout(pnThongKe_106);
@@ -156,10 +161,10 @@ public class GiaoDienAdmin extends javax.swing.JFrame {
                     .addComponent(pnNVien_106, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnMenu_106, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
                 .addComponent(logOut_106, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,9 +176,9 @@ public class GiaoDienAdmin extends javax.swing.JFrame {
                 .addComponent(pnMenu_106, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(pnThongKe_106, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
+                .addGap(61, 61, 61)
                 .addComponent(logOut_106, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -193,7 +198,7 @@ public class GiaoDienAdmin extends javax.swing.JFrame {
         jview.setLayout(jviewLayout);
         jviewLayout.setHorizontalGroup(
             jviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 607, Short.MAX_VALUE)
+            .addGap(0, 565, Short.MAX_VALUE)
         );
         jviewLayout.setVerticalGroup(
             jviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
