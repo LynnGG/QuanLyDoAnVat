@@ -106,7 +106,7 @@ public class HoaDon_C {
         Connection con = cnn.connect();
         Statement stm = null;
         ResultSet rs = null;
-        String sql = "SELECT TOP 1 * FROM thongKe ORDER BY maHoaDon DESC";
+        String sql = "SELECT TOP 1 * FROM thongKe ORDER BY maHoaDon + 0 DESC";
         try {
             stm = con.createStatement();
             rs = stm.executeQuery(sql);

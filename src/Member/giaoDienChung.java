@@ -530,11 +530,18 @@ public class giaoDienChung extends javax.swing.JFrame {
 
             dtm2.removeRow(jTable4.getSelectedRow());
         }
+        int mk = 0;
+        for (int count = 0; count < dtm2.getRowCount(); count++) {
+            mk += Integer.parseInt(dtm2.getValueAt(count, 2).toString()) * Integer.parseInt(dtm2.getValueAt(count, 1).toString());
+        }
+        moneyTxt1.setText(String.valueOf(mk));
     }//GEN-LAST:event_delMonActionPerformed
 
     private void huyHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_huyHoaDonActionPerformed
         // TODO add your handling code here:
         dtm2.setNumRows(0);
+        moneyTxt1.setText("0");
+
     }//GEN-LAST:event_huyHoaDonActionPerformed
 
     private void printHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printHDActionPerformed
