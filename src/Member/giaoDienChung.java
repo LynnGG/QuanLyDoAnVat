@@ -9,7 +9,7 @@ import Controller.Menu_C;
 import GetAndSet.Menu;
 import GetAndSet.TaiKhoan;
 import GetAndSet.ThongKe;
-import dangkydangnhap.DangNhapMenu;
+import dangkydangnhap.DangNhap;
 import java.awt.print.PrinterException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -543,9 +543,10 @@ public class giaoDienChung extends javax.swing.JFrame {
         String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
 
         txt.setText(txt.getText() + "\t -------------Hóa Đơn------------ \t\n");
-        txt.setText(txt.getText() + "\t Thời Gian :" + timeStamp + "\t\t\n");
-        txt.setText(txt.getText() + "\t Bàn :" + combo1.getSelectedItem().toString() + "\t\t\n");
-        txt.setText(txt.getText() + "\t Mã Hóa Đơn :" + id_HD1.getText() + "\t\t\n");
+        txt.setText(txt.getText() + "\t Nhân Viên : " + name1.getText() + "\t\t\n");
+        txt.setText(txt.getText() + "\t Thời Gian : " + timeStamp + "\t\t\n");
+        txt.setText(txt.getText() + "\t Bàn : " + combo1.getSelectedItem().toString() + "\t\t\n");
+        txt.setText(txt.getText() + "\t Mã Hóa Đơn : " + id_HD1.getText() + "\t\t\n");
         txt.setText(txt.getText() + "------------------------------------------------------------------------------------------------------\t\n");
         txt.setText(txt.getText() + "\t Tên Món \t Số Lượng \t Thành Tiền\t\t\n");
         txt.setText(txt.getText() + "------------------------------------------------------------------------------------------------------\t\n");
@@ -575,7 +576,7 @@ public class giaoDienChung extends javax.swing.JFrame {
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         // TODO add your handling code here:
         int mk = 0;
-        if (slBox1.equals("") || tenMon.equals("")) {
+        if (slBox1.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Thêm Số Lượng || Đồ Ăn");
         } else {
             sl = Integer.parseInt(slBox1.getText());
@@ -588,9 +589,6 @@ public class giaoDienChung extends javax.swing.JFrame {
             mk += Integer.parseInt(dtm2.getValueAt(count, 2).toString()) * Integer.parseInt(dtm2.getValueAt(count, 1).toString());
         }
         moneyTxt1.setText(String.valueOf(mk));
-        tenMon = "";
-        sl = 0;
-        giaThanh = 0;
         slBox1.setText("");
     }//GEN-LAST:event_addActionPerformed
 
@@ -607,7 +605,7 @@ public class giaoDienChung extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        DangNhapMenu dn = new DangNhapMenu();
+        DangNhap dn = new DangNhap();
         dn.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

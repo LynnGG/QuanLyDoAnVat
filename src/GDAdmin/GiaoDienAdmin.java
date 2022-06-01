@@ -7,7 +7,7 @@ package GDAdmin;
 
 import Controller.controllerGD;
 import Controller.danhmuc;
-import dangkydangnhap.DangNhapMenu;
+import dangkydangnhap.DangNhap;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -224,7 +224,7 @@ public class GiaoDienAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void logOut_106ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOut_106ActionPerformed
-        DangNhapMenu dnm = new DangNhapMenu();
+        DangNhap dnm = new DangNhap();
         dnm.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_logOut_106ActionPerformed

@@ -183,7 +183,7 @@ public class DangKy extends javax.swing.JFrame {
 
     }
     private void btnLIn_345ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLIn_345ActionPerformed
-        DangNhapMenu dnmn = new DangNhapMenu();
+        DangNhap dnmn = new DangNhap();
         dnmn.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnLIn_345ActionPerformed
